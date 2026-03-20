@@ -52,10 +52,5 @@ app.delete('/api/todos/:id', async (req, res) => {
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Backend lancé sur le port ${PORT}`));
-```
-
-Crée `backend/.env` (pour le dev local uniquement, **ne pas commit**) :
-```
-DATABASE_URL=postgresql://postgres:motdepasse@localhost:5432/tododb
