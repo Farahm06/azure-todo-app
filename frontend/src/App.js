@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div style={{ maxWidth: 500, margin: '50px auto', fontFamily: 'sans-serif' }}>
-      <h1>TEST DEPLOIEMENT FARAH</h1>
+      <h1>Todo App — Azure TP</h1>
       <div style={{ display: 'flex', gap: 8 }}>
         <input
           value={title}
