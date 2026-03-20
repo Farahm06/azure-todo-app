@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const API = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+const API = 'https://todo-backend-farah.azurewebsites.net';
 
 function App() {
   const [todos, setTodos] = useState([]);
