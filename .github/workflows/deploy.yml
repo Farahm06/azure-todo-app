@@ -2,15 +2,13 @@ name: Deploy to Azure
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout GitHub Action'
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: 'Setup Node.js'
         uses: actions/setup-node@v4
@@ -21,14 +19,15 @@ jobs:
         run: |
           cd frontend
           npm install
-          REACT_APP_API_URL=https://todo-backend-farah.azurewebsites.net npm run build
+          CI=false npm run build 
+          ls -la build 
 
       - name: 'Login via Azure CLI'
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: 'Deploy Frontend to Azure'
+      - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'todo-frontend-farah'
