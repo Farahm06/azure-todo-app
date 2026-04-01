@@ -18,7 +18,7 @@ pool.query(`
     title TEXT NOT NULL,
     done BOOLEAN DEFAULT false
   )
-`);
+`).catch(err => console.error('DB init error:', err));
 
 // Routes
 app.get('/api/todos', async (req, res) => {
