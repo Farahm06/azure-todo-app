@@ -2,6 +2,7 @@ const express = require('express');
 const { Pool } = require('pg');
 const cors = require('cors');
 require('dotenv').config({ override: false });
+console.log('DATABASE_URL reçue:', process.env.DATABASE_URL ? 'OUI' : 'NON - undefined');
 
 const app = express();
 app.use(cors());
