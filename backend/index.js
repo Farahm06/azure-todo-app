@@ -7,9 +7,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+console.log('DATABASE_URL:', process.env.DATABASE_URL ? 'définie' : 'UNDEFINED');
+
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false } // requis sur Azure
+  host: process.env.PGHOST,
+  user: process.env.PGUSER || 'todoadmin',
+  password: process.env.PGPASSWORD,
+  database: process.env.PGDATABASE || 'postgres',
+  port: 5432,
+  ssl: { rejectUnauthorized: false }
 });
 
 pool.query(`
