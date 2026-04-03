@@ -15,12 +15,18 @@ jobs:
         with:
           node-version: '20'
 
+      - name: 'Test Backend'
+        run: |
+          cd backend
+          npm install
+          npm test
+
       - name: 'Build Frontend'
         run: |
           cd frontend
           npm install
-          CI=false npm run build 
-          ls -la build 
+          CI=false npm run build
+          ls -la build
 
       - name: 'Login via Azure CLI'
         uses: azure/login@v1
